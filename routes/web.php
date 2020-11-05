@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImovelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia\Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    Route::get('imoveis', [ImovelController::class, 'index'])->name('imoveis.index');
+    Route::get('imoveis/create', [ImovelController::class, 'create'])->name('imoveis.create');
+    Route::post('imoveis', [ImovelController::class, 'store'])->name('imoveis.store');
+    Route::delete('imoveis/{imovel}', [ImovelController::class, 'destroy'])->name('imoveis.destroy');
+});
