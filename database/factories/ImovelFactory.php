@@ -22,7 +22,13 @@ class ImovelFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'email_proprietario' => $this->faker->email,
+            'rua' => $this->faker->streetName,
+            'numero' => $this->faker->buildingNumber,
+            'complemento' => $this->faker->secondaryAddress,
+            'bairro' => $this->faker->streetSuffix,
+            'cidade' => $this->faker->city,
+            'estado' => $this->faker->state,
         ];
     }
 }

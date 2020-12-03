@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class ImovelSeeder extends Seeder
+class ContratoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class ImovelSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Imovel::factory(10)->create();
+        //
     }
 }
